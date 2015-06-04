@@ -2,7 +2,7 @@
   <classpathentry kind="src" path="app" output=".target"/>
   <classpathentry kind="src" path="test" output=".target"/>
   <classpathentry kind="lib" path=".\lib\guava-15.0.jar"/>
-  <classpathentry path="C:\Users\Vinicius\Documents\SI1 Labs\Lab2\lab2-si1\Lab2_Parte2\target\scala-2.10\classes_managed" kind="lib"></classpathentry>
+  <classpathentry path="C:\Users\Vinicius\Documents\Lab2_Si1_Git\Lab2-Parte2-Si1\Parte2_Lab2\target\scala-2.10\classes_managed" kind="lib"></classpathentry>
   <classpathentry kind="lib" path="C:\Users\Vinicius\.ivy2\cache\com.typesafe.play\play-java-jdbc_2.10\jars\play-java-jdbc_2.10-2.2.3.jar"/>
   <classpathentry kind="lib" path="C:\Users\Vinicius\.ivy2\cache\com.typesafe.play\play-jdbc_2.10\jars\play-jdbc_2.10-2.2.3.jar"/>
   <classpathentry kind="lib" path="C:\Users\Vinicius\.ivy2\cache\com.typesafe.play\play_2.10\jars\play_2.10-2.2.3.jar"/>

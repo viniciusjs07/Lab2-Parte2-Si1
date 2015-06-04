@@ -9,33 +9,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap CSS -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+          
+          <style type="text/css">
+	<!--h1 {font-size: 60px;}-->
+	<!--p {font-size: 40px;}-->
+</style>
     </head>
     <body>
     
     
     
-      <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Navegação</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="@routes.Application.anuncio()">Home</a>
+     <div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top">
+      
+        <div class="navbar-header">
+	    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+        
         </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="@routes.Application.index()">Home</a></li>
+            
+            
+               <ul class="nav navbar-nav">
                 <li>
-                    <a href="@routes.Application.criar()">Criar Anúncio</a>
+                    <a href="@routes.Application.criar()" method="post">Criar Anúncio</a>
                 </li>
+                
 
             </ul>
-            <div class="jumbotron">
-            	<h1>Encontros de Estilos Musicais</h1>
-            	<p>Crie seu Anúncio</p>
-        	</div>
+           
+          </ul>
         </div>
+
+    </div>
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
+
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="https://webradiotornado.files.wordpress.com/2011/09/1305567196-11-dj-music-wallpaper.jpg" style="width:100%" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+      
+          <h1> <strong>Encontros de Estilos Musicais </strong></h1>
+          		<p>Crie seu Anúncio</p>
+          
+        </div>
+      </div>
+    </div>
     
     
     
@@ -78,7 +108,7 @@
                     
         
          
-          <input type="submit" class="btn btn-sucess btn-mini" value="Criar Anúncio">
+           <button type="submit" class="btn btn-success btn-lg">Publicar Anúncio</button>
            	
         <!-- jQuery -->
         <script src="http://code.jquery.com/jquery.js"></script>

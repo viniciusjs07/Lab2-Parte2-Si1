@@ -39,14 +39,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <!-- <li><a href="http://www.bootply.com" target="ext">About</a></li>-->
-            <!--  <li><a href="#contact">Contact</a></li>-->
+            <li class="active"><a href="@routes.Application.index()">Home</a></li>
+            
             
                <ul class="nav navbar-nav">
                 <li>
                     <a href="@routes.Application.criar()" method="post">Criar Anúncio</a>
                 </li>
+                
 
             </ul>
            
@@ -129,7 +129,9 @@
             </div>
         </div>
         <form action="@routes.Application.criar()" method="post"> 
-            <input type="submit" class="pull-right btn btn-sucess btn-mini" value="Criar Anúncio">
+        <button type="submit" class="pull-right btn btn-primary btn-lg">Criar Anúncio</button>
+        
+           
         </form>
 
 		<div class="col-sm-5"> </div>
@@ -143,6 +145,13 @@
         <script src="http://code.jquery.com/jquery.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        
+         
+	                    <hr class="tagline-divider">
+	                    <h2>
+	                        <small>Criado por
+	                            <strong>Vinícius Silva</strong>
+	                        </small>
     </body>
 </html>
 

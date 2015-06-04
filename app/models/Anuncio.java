@@ -1,7 +1,10 @@
 package models;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,14 +14,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.google.common.base.Objects;
 
 // Entidade que representa um Livro
 // Referenciar a uma tabela
 @Entity(name = "Anuncio")
-public class Anuncio {
+public class Anuncio implements Serializable,Comparable<Anuncio> {
 
 	// Todo Id tem que ter o GeneratedValue a não ser que ele seja setado
 	// Usar Id sempre Long
@@ -38,7 +43,16 @@ public class Anuncio {
 	private List<String> instrumentos;
 	@ElementCollection
 	private List<String> estilosMusicais;
-
+	
+	@Column(name = "create_on")
+	@Temporal(value = TemporalType.DATE)
+	private Date createdOn;
+	
+	@Transient
+	private static SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+	
+	@Transient
+	private static final long serialVersionUID = 1L;
 
 	// Construtor vazio para o Hibernate criar os objetos
 	public Anuncio() {
@@ -54,6 +68,7 @@ public class Anuncio {
 		this.face = face;
 		this.obj = obj;
 		this.estilosMusicais = new ArrayList<String>();
+		setCreatedOn(new Date());
 	}
 	public String getCidade() {
 		return cidade;
@@ -111,6 +126,15 @@ public class Anuncio {
 	public List<String> getEstilosMusicais() {
 		return estilosMusicais;
 	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
 	public void setEstilosMusicais(List<String> estilosMusicais) {
 		this.estilosMusicais = estilosMusicais;
 	}
@@ -147,8 +171,15 @@ public class Anuncio {
     public void addAnunciante(Anunciante anunciante) {
         autores.add(anunciante);
     }
+    
+    public String getDateFormat() {
+		return formatoData.format(createdOn);
+		
+	}
+	@Override
+	public int compareTo(Anuncio other) {
+		
+		return this.createdOn.compareTo(other.getCreatedOn()) * (-1);
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
 }

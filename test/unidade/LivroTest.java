@@ -35,7 +35,7 @@ public class LivroTest extends AbstractTest {
 	public void deveSalvarLivroComAutor() {
 		Anunciante a1 = new Anunciante("George Martin");
 		Anuncio l1 = new Anuncio("A Game of Thrones", a1); // cria o livro com autor
-		a1.addLivro(l1); // add o livro ao autor
+		a1.add(l1); // add o livro ao autor
 		
 		dao.persist(l1); // salva tudo junto
 		

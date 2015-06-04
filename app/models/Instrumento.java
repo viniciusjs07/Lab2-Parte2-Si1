@@ -1,14 +1,22 @@
 package models;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import com.google.common.base.Objects;
 
-@Entity
-public class Instrumento {
+@Entity(name = "Instrumento")
+public class Instrumento implements Serializable {
 
 	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(name = "name", nullable = false)
 	private String nome;
 
 	public Instrumento() {
@@ -21,6 +29,14 @@ public class Instrumento {
 
 	public void setInstrumento(String nome) {
 		this.nome = nome;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override

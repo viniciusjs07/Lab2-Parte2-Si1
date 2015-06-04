@@ -21,7 +21,8 @@ public class Application extends Controller {
 	public static Result index() {
 		return redirect(routes.Application.anuncio());
 	}
-	public static Result criarAnuncio(){
+
+	public static Result criarAnuncio() {
 		return redirect(routes.Application.criar());
 	}
 
@@ -31,9 +32,10 @@ public class Application extends Controller {
 		List<Anuncio> result = dao.findAllByClass(Anuncio.class);
 		return ok(views.html.criar.render(result));
 	}
+
 	/*
-	 * A Anotação transactional é necessária em todas as Actions que
-	 * usarem o BD.
+	 * A Anotação transactional é necessária em todas as Actions que usarem o
+	 * BD.
 	 */
 	@Transactional
 	public static Result anuncio() {
@@ -42,45 +44,39 @@ public class Application extends Controller {
 		return ok(views.html.index.render(result));
 	}
 
-	
-	
-
-	
 	@Transactional
 	public static Result newAnuncio() {
 		// O formulário dos Livros Preenchidos
 		Form<Anuncio> filledForm = anuncioForm.bindFromRequest();
 
 		if (filledForm.hasErrors()) {
-            List<Anuncio> result = dao.findAllByClass(Anuncio.class);
-            //TODO falta colocar na interface mensagem de erro.
+			List<Anuncio> result = dao.findAllByClass(Anuncio.class);
+			// TODO falta colocar na interface mensagem de erro.
 			return badRequest(views.html.index.render(result));
 		} else {
-            Anuncio novoAnuncio = filledForm.get();
-            Logger.debug("Criando livro: " + filledForm.data().toString() + " como " + novoAnuncio.getNome());
+			Anuncio novoAnuncio = filledForm.get();
+			Logger.debug("Criando livro: " + filledForm.data().toString()
+					+ " como " + novoAnuncio.getNome());
 			// Persiste o Livro criado
 			dao.persist(novoAnuncio);
 			// Espelha no Banco de Dados
 			dao.flush();
-            /*
-             * Usar routes.Application.<uma action> é uma forma de
-             * evitar colocar rotas literais (ex: "/books")
-             * hard-coded no código. Dessa forma, se mudamos no
-             * arquivo routes, continua funcionando.
-             */
+			/*
+			 * Usar routes.Application.<uma action> é uma forma de evitar
+			 * colocar rotas literais (ex: "/books") hard-coded no código. Dessa
+			 * forma, se mudamos no arquivo routes, continua funcionando.
+			 */
 			return redirect(routes.Application.anuncio());
 		}
 	}
 
-	
-	
 	@Transactional
 	public static Result addAnunciante(Long id, String nome) {
-		criaAutorDoLivro(id, nome);
-        return redirect(routes.Application.anuncio());
+		criaAnunciante(id, nome);
+		return redirect(routes.Application.anuncio());
 	}
 
-	private static void criaAutorDoLivro(Long id, String nome) {
+	private static void criaAnunciante(Long id, String nome) {
 		// Cria um novo Autor para um livro de {@code id}
 		Anunciante anunciante = new Anunciante(nome);
 		// Procura um objeto da classe Livro com o {@code id}
@@ -91,10 +87,11 @@ public class Application extends Controller {
 		// Persiste o Novo Autor
 		dao.persist(anunciante);
 
-		/* As informações do livro já serão automaticamente atualizadas
-		 * no BD no final da transação. Isso porque o livro já existe
-		 * no BD, e então já é gerenciado por ele.
-		 *
+		/*
+		 * As informações do livro já serão automaticamente atualizadas no BD no
+		 * final da transação. Isso porque o livro já existe no BD, e então já é
+		 * gerenciado por ele.
+		 * 
 		 * Assim fica opcional fazer dao.merge(livroDaListagem);
 		 */
 		// Espelha no Banco de Dados

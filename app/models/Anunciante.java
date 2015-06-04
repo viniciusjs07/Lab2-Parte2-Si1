@@ -1,5 +1,6 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,8 +19,8 @@ import javax.persistence.SequenceGenerator;
 import com.google.common.base.Objects;
 
 // Entidade que representa uma Tabela no Banco de Dados
-@Entity
-public class Anunciante {
+@Entity(name="Anunciante")
+public class Anunciante implements Serializable{
 
 	// Gerador de Sequencia para o Id
 	@Id
